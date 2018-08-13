@@ -1,0 +1,5 @@
+<view class="container">
+<image class='about-banner'
+src="/images/a.jpg"></image>
+<text style='font-weight:bold;font-size:60rpx;'>Crystal's world</text>
+</view>

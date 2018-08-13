@@ -1,0 +1,22 @@
+{
+  "pages":["pages/about/about","pages/sell/sell"],
+  "tabBar":{
+    "list":[
+      {
+        "text":"主页",
+        "pagePath":"pages/about/about",
+        "iconPath":"images/icons/about.jpg",
+        "selectedIconPath":"images/icons/about.jpg"
+      },
+      {"text": "照片",
+       "pagePath": "pages/sell/sell",
+       "iconPath": "images/icons/sell.jpg",
+       "selectedIconPath" : "images/icons/sell.jpg"
+
+      }
+    ]
+  },
+  "window":{
+    "navigationBarTitleText": "Crystal"
+  }
+}

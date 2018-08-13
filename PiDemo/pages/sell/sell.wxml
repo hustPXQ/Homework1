@@ -1,0 +1,14 @@
+
+<swiper indicator-dots='{{true}}' class='size'>
+<view class="container">
+ <swiper-item> 
+ <image  src='/images/crystal1.jpg'></image>
+ </swiper-item>
+ <swiper-item> 
+ <image  src='/images/crystal2.jpg'></image>
+ </swiper-item>
+ <swiper-item> 
+ <image  src='/images/crystal3.jpg'></image>
+ </swiper-item>
+ </view>
+</swiper>
