@@ -1,0 +1,28 @@
+{
+    "pages":["pages/about/about","pages/weekly/weekly"],
+
+   "tabBar":{
+     "list":[
+       {
+         "text":"每周推荐",
+         "pagePath":"pages/weekly/weekly",
+         "iconPath":"images/icons/weekly.jpg",
+         "selectedIconPath":"images/icons/weekly-selected.jpg"
+       },
+       {
+         "text":"关于",
+         "pagePath":"pages/about/about",
+         "iconPath":"images/icons/about.jpg",
+         "selectedIconPath":"images/icons/about-selected.jpg"
+       }
+            ],
+      "color":"#000",
+      "selectedColor":"#00f"
+            },
+      "window":{
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText":"电影周周看"
+      }
+}
+
