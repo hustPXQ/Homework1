@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.JScript.Vsa;
 using System.IO;
 
 namespace App1
@@ -33,10 +27,6 @@ namespace App1
         public String[] texts = new String[10000];
         List<string> expressions = new List<string>();
 
-
-
-
-
         //处理表达式
         public void addComments(String s)
         {
@@ -46,131 +36,26 @@ namespace App1
             this.richTextBox1.Text = this.text;
             tab++;
         }
-
-
-        //0按钮的触发事件
-        private void button10_Click(object sender, EventArgs e)
+        
+        //按钮的触发事件
+        private void button_number_Click(object sender, EventArgs e)
         {
-            this.addComments("0");
-        }
-        //小数点.按钮的触发事件
-        private void button12_Click(object sender, EventArgs e)
-        {
-            this.addComments(".");
+            this.addComments( (sender as Button ).Text ); 
         }
 
-        //1按钮的触发事件
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.addComments("1");
-        }
-
-        //2按钮的触发事件
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.addComments("2");
-        }
-
-        //3按钮的触发事件
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.addComments("3"); ;
-        }
-
-        //4按钮的触发事件
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.addComments("4");
-        }
-
-        //5按钮的触发事件
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.addComments("5");
-        }
-
-        //6按钮的触发事件
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.addComments("6");
-        }
-
-        //7按钮的触发事件
-        private void button7_Click(object sender, EventArgs e)
-        {
-            this.addComments("7");
-        }
-
-        //8按钮的触发事件
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.addComments("8");
-        }
-
-        //9按钮的触发事件
-        private void button9_Click(object sender, EventArgs e)
-        {
-            this.addComments("9");
-        }
-
-        //（按钮的触发事件
-        private void button18_Click(object sender, EventArgs e)
-        {
-            this.addComments("(");
-        }
-
-        //）按钮的触发事件
-        private void button17_Click(object sender, EventArgs e)
-        {
-            this.addComments(")");
-        }
-
-        //+按钮的触发事件
-        private void button13_Click(object sender, EventArgs e)
-        {
-            this.addComments("+");
-        }
-
-        //-按钮的触发事件
-        private void button14_Click(object sender, EventArgs e)
-        {
-            this.addComments("-");
-        }
-
-        //*按钮的触发事件
-        private void button15_Click(object sender, EventArgs e)
-        {
-            this.addComments("*");
-        }
-
-        //按钮/的触发事件
-        private void button16_Click(object sender, EventArgs e)
-        {
-            this.addComments("/");
-        }
-
-        /// <summary>
         /// =按钮的触发事件,最终计算结果并显示
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void button11_Click(object sender, EventArgs e)
         {
             try
-            {
-                //就是结果
-                // String result = Microsoft.JScript.Eval.JScriptEvaluate(this.text, ve).ToString();
-                //String result = new System.Data.DataTable().Compute("this.text", "");
-                //  DataTable eval = new DataTable(); object result = eval.Compute(this.text, "");
-                string formula = this.text;
+            {   //计算字符串表达式
                 DataTable dt = new DataTable();
-                string result = dt.Compute(formula, "false").ToString();
+                string result = dt.Compute(this.text, "false").ToString();
 
                 this.richTextBox1.Text = result;
                 this.record[RecordNum] = this.text;
 
                 expressions.Add(this.text + "=" + result);
-                FileStream resultfile = new FileStream("result.txt", FileMode.OpenOrCreate);
+                FileStream resultfile = new FileStream("result.txt", FileMode.Append);
                 StreamWriter streamWriter = new StreamWriter(resultfile);
                 foreach(string a in expressions)
                 {
@@ -237,7 +122,6 @@ namespace App1
             {
                 Precord = 0;
             }
-            // this.text = this.record[Precord];
 
             this.richTextBox1.Text = this.record[Precord];
 
