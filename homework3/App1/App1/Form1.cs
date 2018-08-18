@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.JScript.Vsa;
+using System.IO;
 
 namespace App1
 {
 
-    public partial class 计算器 : Form
+    public partial class Caculator : Form
     {
-        public 计算器()
+        
+        public Caculator()
         {
             InitializeComponent();
         }
@@ -29,12 +31,10 @@ namespace App1
         public String[] record = new String[10];
         //存储表达式
         public String[] texts = new String[10000];
+        List<string> expressions = new List<string>();
 
 
 
-
-        //加载js引擎(已过时)
-        //Microsoft.JScript.Vsa.VsaEngine ve = Microsoft.JScript.Vsa.VsaEngine.CreateEngine();
 
 
         //处理表达式
@@ -46,6 +46,7 @@ namespace App1
             this.richTextBox1.Text = this.text;
             tab++;
         }
+
 
         //0按钮的触发事件
         private void button10_Click(object sender, EventArgs e)
@@ -167,12 +168,22 @@ namespace App1
 
                 this.richTextBox1.Text = result;
                 this.record[RecordNum] = this.text;
+
+                expressions.Add(this.text + "=" + result);
+                FileStream resultfile = new FileStream("result.txt", FileMode.OpenOrCreate);
+                StreamWriter streamWriter = new StreamWriter(resultfile);
+                foreach(string a in expressions)
+                {
+                    streamWriter.WriteLine(a);
+                 }
+                streamWriter.Close();
+
                 this.text = result;
 
                 this.RecordNum++;
 
                 this.Precord = this.RecordNum;
-
+                
             }
             catch (Exception)
             {

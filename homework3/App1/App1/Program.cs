@@ -16,7 +16,7 @@ namespace App1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new 计算器());
+            Application.Run(new Caculator());
         }
     }
 }
